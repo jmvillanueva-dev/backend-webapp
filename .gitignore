@@ -1,0 +1,42 @@
+# ======================
+# Node
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# ======================
+# Build
+# ======================
+dist/
+build/
+
+# ======================
+# Env
+# ======================
+.env
+
+# ======================
+# Prisma
+src/generated/prisma/
+.prisma/
+
+# Motores/engines compilados
+**/query_engine-*.dll.node
+**/query_engine-*.so.node
+**/query_engine-*.dylib.node
+
+
+# ======================
+# SQLite (si usas localmente)
+*.db
+*.db-journal
+
+# ======================
+# Editor / SO
+# ======================
+.vscode/
+.DS_Store
+Thumbs.db
