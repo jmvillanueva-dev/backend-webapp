@@ -93,7 +93,6 @@ export const loginUser = async (req, res) => {
   }
 };
 
-
 export const confirmUser = async (req, res) => {
   const { token } = req.params;
 

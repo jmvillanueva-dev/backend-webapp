@@ -11,9 +11,9 @@ datasource db {
 // Database models
 model Usuario {
   id        Int      @id @default(autoincrement())
-  nombre    String   @db.VarChar(30)
-  apellido  String   @db.VarChar(20)
-  email     String   @unique @db.VarChar(30)
+  nombre    String   @db.VarChar(50)
+  apellido  String   @db.VarChar(50)
+  email     String   @unique @db.VarChar(50)
   password  String   @db.VarChar(200)
   isActive  Boolean  @default(false)
   createdAt DateTime @default(now()) @map("fecha_creacion")
@@ -24,9 +24,9 @@ model Usuario {
 
 model Materia {
   id          Int     @id @default(autoincrement())
-  nombre      String  @db.VarChar(20)
-  codigo      String  @db.VarChar(20)
-  descripcion String? @db.VarChar(20)
+  nombre      String  @db.VarChar(50)
+  codigo      String  @db.VarChar(50)
+  descripcion String? @db.Text
   creditos    String  @db.VarChar(10)
 
   matriculas Matricula[]
@@ -36,14 +36,14 @@ model Materia {
 
 model Estudiante {
   id              Int    @id @default(autoincrement())
-  nombre          String @db.VarChar(20)
-  apellido        String @db.VarChar(20)
-  cedula          String @db.VarChar(20)
-  fechaNacimiento String @map("fecha_nacimiento") @db.VarChar(20)
-  ciudad          String @db.VarChar(20)
-  direccion       String @db.VarChar(10)
-  telefono        String @db.VarChar(20)
-  email           String @db.VarChar(20)
+  nombre          String @db.VarChar(50)
+  apellido        String @db.VarChar(50)
+  cedula          String @db.VarChar(50)
+  fechaNacimiento String @map("fecha_nacimiento") @db.VarChar(50)
+  ciudad          String @db.VarChar(50)
+  direccion       String @db.VarChar(200)
+  telefono        String @db.VarChar(50)
+  email           String @db.VarChar(50)
 
   matriculas Matricula[]
 
@@ -53,7 +53,7 @@ model Estudiante {
 model Matricula {
   id          Int    @id @default(autoincrement())
   codigo      Int
-  descripcion String @db.VarChar(20)
+  descripcion String @db.Text
 
   estudianteId Int        @map("estudiante_id")
   estudiante   Estudiante @relation(fields: [estudianteId], references: [id])
