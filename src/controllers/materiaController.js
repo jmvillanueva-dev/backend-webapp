@@ -74,8 +74,16 @@ export const deleteMateria = async (req, res) => {
     });
     res.status(200).json({ message: "Materia eliminada exitosamente" });
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error al eliminar la materia", error: err.message });
+    if (err.code === "P2003") {
+      res.status(409).json({
+        message:
+          "Lo sentimos, no se puede eliminar esta materia porque está asociado a una o más matrículas.",
+      });
+    } else {
+      res.status(500).json({
+        message: "Error al eliminar el materia",
+        error: error.message,
+      });
+    }
   }
 };
